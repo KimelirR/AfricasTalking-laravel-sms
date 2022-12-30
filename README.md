@@ -50,10 +50,10 @@ php artisan serve
 
 *Api endpoint [http://127.0.0.1:8000/africatalks/sendsms]
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/public/images/screenshot1.png?raw=true)
+![alt text](https://github.com/[KimelirR]/[AfricasTalking-laravel-sms]/blob/[master]/public/images/screenshot1.png?raw=true)
 
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/public/images/screenshot2.png?raw=true)
+![alt text](https://github.com/[KimelirR]/[AfricasTalking-laravel-sms]/blob/[master]/public/images/screenshot2.png?raw=true)
 
 
 </div>
