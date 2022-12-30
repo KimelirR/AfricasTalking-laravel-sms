@@ -48,13 +48,12 @@ php artisan serve
 
 *On Postman*
 
-Api endpoint [http://127.0.0.1:8000/africatalks/sendsms]
+Api endpoint [http://127.0.0.1:8000/api/africatalks/sendsms]
 
-<!-- ![screnshot](https://github.com/KimelirR/database-design-for-country-person-and-city/blob/main/Screenshot%20(8).png) -->
-
+Set the headers as following
 ![alt text](https://github.com/KimelirR/AfricasTalking-laravel-sms/blob/master/public/images/screenshot1.png?raw=true)
 
-
+Set the body this way...Url_encoded
 ![alt text](https://github.com/KimelirR/AfricasTalking-laravel-sms/blob/master/public/images/screenshot2.png?raw=true)
 
 
