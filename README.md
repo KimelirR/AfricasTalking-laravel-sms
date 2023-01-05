@@ -49,7 +49,8 @@
     ```
 > Congratulations you have installed laravel app successfully!
 
-* **On terminal split into two**
+## Start Our application
+* __*On terminal split into two*__
     * First one || Start our laravel app
       ```php
        php artisan server
@@ -59,6 +60,7 @@
        npm run build
       ```
 
+## Postman configuration
 * __*On Postman*__
 
   * Our api endpoint [http://127.0.0.1:8000/api/africatalks/sendsms]
