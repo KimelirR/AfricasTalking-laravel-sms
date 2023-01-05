@@ -71,4 +71,6 @@
 
     ![alt text](https://github.com/KimelirR/AfricasTalking-laravel-sms/blob/master/public/images/screenshot2.png?raw=true)
 
+> ! Lastly send messages. The end
+
 
