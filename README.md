@@ -75,52 +75,68 @@
 
 # Edited controller to support delivery report
 
+* When Message receivers are more than 1
 ```php
        $object = json_decode(json_encode($result), false);
-                //We save data from response to ensure
-                $response_array = $object->data->SMSMessageData->Recipients;
-                $message = $request->input('message');
+        //We save data from response to ensure
+        $response_array = $object->data->SMSMessageData->Recipients;
+        $message = $request->input('message');
 
-                $count = count($response_array);
+        $count = count($response_array);
 
-                if($count > 1){
+        if($count > 1){
 
-                    #Initialize array to save since multisave to database
-                    $saved = [];
-                    foreach ($response_array as $row) :
+            #Initialize array to save since multisave to database
+            $saved = [];
+            foreach ($response_array as $row) :
 
-                        $data->to = $row->number;
-                        $data->message = $message;
-                        $data->delivery_status = $row->status;
-                        if($data->delivery_status == "Success"){
-                            $data->delivery_status = 1;
-                        }
-                        else{
-                            $data->delivery_status = 0;
-                        }
-                        $data->created_at =Carbon::now()->format('Y-m-d h:i:s');
-                        $data->updated_at = date('Y-m-d h:i:s');
-                        $saved[] = [
-                            'to'=>$data->to,
-                            'message'=> $data->message,
-                            'delivery_status'=> $data->delivery_status,
-                            'created_at'=>$data->created_at,
-                            'updated_at' => $data->updated_at
-                        ];
+                $data->to = $row->number;
+                $data->message = $message;
+                $data->delivery_status = $row->status;
+                if($data->delivery_status == "Success"){
+                    $data->delivery_status = 1;
+                }
+                else{
+                    $data->delivery_status = 0;
+                }
+                $data->created_at =Carbon::now()->format('Y-m-d h:i:s');
+                $data->updated_at = date('Y-m-d h:i:s');
+                $saved[] = [
+                    'to'=>$data->to,
+                    'message'=> $data->message,
+                    'delivery_status'=> $data->delivery_status,
+                    'created_at'=>$data->created_at,
+                    'updated_at' => $data->updated_at
+                ];
 
-                    endforeach;
-                    // SAVE TO DATABASE FOR BACKUP
-                    AfricaTalk::insert($saved);
-
-                 }
+            endforeach;
+            // SAVE TO DATABASE FOR BACKUP
+            AfricaTalk::insert($saved);
 
 ```
 
+* When Sending Message to One receiver
+
+```php
+    $number = $response_array[0]->number;
+    $status = $response_array[0]->status;
+    //SAVE TO DATABASE FOR BACKUP
+    $data->to = $number;
+    $data->message = $message;
+    $data->delivery_status = $status;
+    if($data->delivery_status == "Success"){
+        $data->delivery_status = 1;
+    }
+    else{
+        $data->delivery_status = 0;
+    }
+    $data->save();
+```
 
 > Migration defualt 0 which represent 'Failed'
 
 ```php
-$table->tinyInteger('delivery_status')->default(0);
+  $table->tinyInteger('delivery_status')->default(0);
 
 ```
 
