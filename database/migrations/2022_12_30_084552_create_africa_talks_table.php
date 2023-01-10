@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('to');
             $table->string('message');
+            $table->tinyInteger('delivery_status')->default(0);
             $table->timestamps();
         });
     }

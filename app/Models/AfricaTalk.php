@@ -12,5 +12,6 @@ class AfricaTalk extends Model
     protected $fillable = [
         'to',
         'message',
+        'delivery_status',
     ];
 }
